@@ -79,10 +79,15 @@ label {
   color: #938b8b;
   font-weight: 600;
   cursor: default;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
-input {
+.field {
+  margin-bottom: 30px;
+}
+
+input,
+select {
   display: block;
   width: 100%;
   position: relative;
@@ -92,7 +97,20 @@ input {
   background-color: #fff;
   border: solid 1px #e0e0e0;
   color: #938b8b;
-  margin-bottom: 5px;
+  margin-bottom: 30px;
   overflow: visible;
   font-size: 100%;
+}
+
+select {
+  text-transform: none;
+}
+
+option {
+  font-weight: normal;
+  display: block;
+  white-space-collapse: collapse;
+  text-wrap: nowrap;
+  min-height: 1.2em;
+  padding: 0px 2px 1px;
 }
