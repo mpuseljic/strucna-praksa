@@ -315,10 +315,29 @@
                   <option value="Zimbabwe" />
                 </datalist>
               </div>
+              <div class="fields-form">
+                <label for="country-of-birth"
+                  >Country of birth / Država rođenja
+                </label>
+                <input
+                  type="text"
+                  name="country-of-birth"
+                  id="country-of-birth"
+                  list="countries"
+                />
+              </div>
             </div>
           </div>
         </form>
       </div>
     </div>
+    <script>
+      const citizenShipInput = document.getElementById("drzavljanstvo");
+      const countryOfBirthInput = document.getElementById("country-of-birth");
+
+      citizenShipInput.addEventListener("input", function () {
+        countryOfBirthInput.value = citizenShipInput.value;
+      });
+    </script>
   </body>
 </html>
