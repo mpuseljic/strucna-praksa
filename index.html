@@ -338,6 +338,13 @@
       citizenShipInput.addEventListener("input", function () {
         countryOfBirthInput.value = citizenShipInput.value;
       });
+
+      countryOfBirthInput.addEventListener("click", function () {
+        this.value = "";
+        citizenShipInput.addEventListener("click", function () {
+          this.value = "";
+        });
+      });
     </script>
   </body>
 </html>
