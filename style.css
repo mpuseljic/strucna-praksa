@@ -150,6 +150,71 @@ input {
   margin-bottom: 30px;
 }
 
+.form-btn {
+  padding: 10px 25px;
+  background-color: #00aff5;
+  color: #fff;
+  font-family: sans-serif;
+  font-size: 15px;
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 65px;
+  position: relative;
+  vertical-align: middle;
+  box-sizing: border-box;
+}
+
+.for-button {
+  text-align: center;
+}
+
+.checkbox {
+  padding-bottom: 15px;
+  font-family: sans-serif;
+  text-align: center !important;
+}
+
+#check-form {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0;
+  width: 15px;
+  height: 15px;
+  line-height: 1;
+  content: "";
+  margin-right: 12px;
+  border: 1px solid #938b8b;
+}
+.text {
+  font-family: sans-serif;
+  font-weight: 500;
+}
+
+.check-in {
+  padding-bottom: 50px;
+  text-align: center !important;
+  display: block;
+}
+
+.submit {
+  max-width: 250px;
+  width: 100%;
+  padding: 10px 25px;
+  background-color: rgb(78, 180, 58);
+  color: white;
+  font-family: sans-serif;
+  font-size: 15px;
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 65px;
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+  outline: 0;
+}
+
 @media (max-width: 1200px) {
   .blue-head {
     min-height: 80px;

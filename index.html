@@ -2,7 +2,7 @@
 <html lang="hr">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GUEST CHECK-IN</title>
     <link rel="stylesheet" href="style.css" />
@@ -340,8 +340,49 @@
                     list="countries"
                   />
                 </div>
+                <div class="field-form">
+                  <label for="place-of-residence"
+                    >Place of residence / Mjesto prebivališta
+                  </label>
+                  <select id="city-select" onfocus="showCities()"></select>
+                </div>
+                <div class="field-form">
+                  <label for="document-type"
+                    >Document type / Vrsta isprave</label
+                  >
+                  <select name="document-type" id="document-type">
+                    <option value="id">ID</option>
+                    <option value="passport">Passport</option>
+                  </select>
+                </div>
+                <div class="field-form">
+                  <label for="document-number"
+                    >Document number / Broj isprave
+                  </label>
+                  <input
+                    type="text"
+                    name="document-number"
+                    id="document-number"
+                  />
+                </div>
+                <p class="for-button" style="padding-bottom: 15px">
+                  <button id="add-person" class="form-btn">
+                    ADD NEXT PERSON
+                  </button>
+                </p>
               </div>
             </div>
+
+            <div class="checkbox" style="margin-bottom: 60px">
+              <label for="form-check">
+                <input type="checkbox" name="check-form" id="check-form" />
+                <span class="text">I accept the GDPR and privacy policy</span>
+              </label>
+            </div>
+
+            <p class="check-in">
+              <button id="submit" class="submit">CHECK-IN</button>
+            </p>
           </form>
         </div>
       </div>
@@ -360,6 +401,26 @@
           this.value = "";
         });
       });
+
+      function showCities() {
+        fetch("hr.json")
+          .then((response) => response.json())
+          .then((data) => {
+            const citySelect = document.getElementById("city-select");
+            citySelect.innerHTML = "";
+
+            data.forEach((city) => {
+              const option = document.createElement("option");
+              option.value = city.city;
+              option.textContent = city.city;
+              citySelect.appendChild(option);
+            });
+            document.getElementById("city-dropdown").style.display = "block";
+          })
+          .catch((error) => {
+            console.error("Error fetching city data: ", error);
+          });
+      }
     </script>
   </body>
 </html>
