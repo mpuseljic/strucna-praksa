@@ -344,7 +344,14 @@
                   <label for="place-of-residence"
                     >Place of residence / Mjesto prebivališta
                   </label>
-                  <select id="city-select" onfocus="showCities()"></select>
+                  <input
+                    type="text"
+                    id="place-input"
+                    oninput="handleCitizenshipInput(this)"
+                  />
+                  <div id="city-dropdown" style="display: none">
+                    <select id="city-select" onfocus="showCities()"></select>
+                  </div>
                 </div>
                 <div class="field-form">
                   <label for="document-type"
@@ -390,9 +397,20 @@
     <script>
       const citizenShipInput = document.getElementById("drzavljanstvo");
       const countryOfBirthInput = document.getElementById("country-of-birth");
+      const citySelect = document.getElementById("city-select");
+      const cityDropdown = document.getElementById("city-dropdown");
+      const cityInput = document.getElementById("place-input");
 
       citizenShipInput.addEventListener("input", function () {
         countryOfBirthInput.value = citizenShipInput.value;
+
+        if (this.value === "Croatia") {
+          cityDropdown.style.display = "block";
+          cityInput.style.display = "none";
+        } else {
+          cityDropdown.style.display = "none";
+          cityInput.style.display = "block";
+        }
       });
 
       countryOfBirthInput.addEventListener("click", function () {
@@ -406,8 +424,9 @@
         fetch("hr.json")
           .then((response) => response.json())
           .then((data) => {
-            const citySelect = document.getElementById("city-select");
             citySelect.innerHTML = "";
+
+            data.sort((a, b) => a.city.localeCompare(b.city));
 
             data.forEach((city) => {
               const option = document.createElement("option");
@@ -415,7 +434,7 @@
               option.textContent = city.city;
               citySelect.appendChild(option);
             });
-            document.getElementById("city-dropdown").style.display = "block";
+            cityDropdown.style.display = "block";
           })
           .catch((error) => {
             console.error("Error fetching city data: ", error);
