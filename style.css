@@ -197,6 +197,10 @@ input {
   display: block;
 }
 
+.language-selector {
+  text-align: end;
+}
+
 .submit {
   max-width: 250px;
   width: 100%;
